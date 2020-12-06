@@ -151,7 +151,21 @@ void closeAccount(){
 }
 
 void interest(){
-  return;
+  int interest;
+  printf("Please enter interest rate"\n);
+  scanf("%d\n",interest);
+  if(interest < 0 || interest > 100)
+    printf("Invalid interest rate\n");
+  else
+  {
+    for (int i = 0; i < SIZE; i++)
+    {
+      if(accounts[i][0] == 1)
+      {
+        accounts[i][1] += accounts[i][1]*(interest/100.0);
+      }
+    }
+  }
 }
 
 /*
