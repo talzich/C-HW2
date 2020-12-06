@@ -6,7 +6,7 @@
 #define FIRST 901
 #define LAST 950
 
-int accounts[51][2] = {0};
+//int accounts[51][2] = {0};
 
 /*
   We will use this function before every action to get the account the user
@@ -28,7 +28,7 @@ int getAccount(){
 
 //Checks if the account is active, returns 1 if yes and 0 if no
 int checkAccount(int account){
-    return accounts[account-900][0];
+    return accounts[account][0];
 }
 
 /*
