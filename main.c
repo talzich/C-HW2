@@ -3,9 +3,9 @@
 
 int main(void){
   //int accounts[51][2] = {0};
-  int run = 1;
+  char run = 'Y';
   printf("Welcome to our bank!\n");
-  while (run)
+  while (run == 'Y')
   {
     char action;
     printf("Here is a list of actions you can preform: \n"
@@ -29,13 +29,15 @@ int main(void){
     else if(action == 'P') print();
     else if(action == 'E') end();
     else
-      {
-        printf("No valid action was entered, try again!\n");
-        run = 1;
-        continue;
-      }
+    {
+      printf("No valid action was entered, try again!\n");
+      continue;
+    }
 
-    printf("Would you like to do anything else? (0 - No, 1 - Yes)\n");
-    scanf("%d",&run);
+    while(run != 'Y' && run != 'N')
+    {
+      printf("Would you like to do anything else? (Y/N)");
+      scanf("%s",&run);
+    }
   }
 }

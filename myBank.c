@@ -15,7 +15,11 @@
 int getAccount(){
   int accountNum;
   printf("Please enter account number (901-950)\n");
-  scanf("%d",&accountNum);
+  if(scanf("%d",&accountNum) != 1)
+    {
+      printf("Invalid input, exiting program\n");
+      exit(0);
+    }
 
   //If user entered illegal account number
   while(accountNum < FIRST || accountNum > LAST)
@@ -38,19 +42,18 @@ int checkAccount(int account){
 */
 void openAccount(){
   int flag = 0;
+  int funds;
+  printf("How much would you like to deposit?\n");
+  if (scanf("%d",&funds) != 1)
+    {
+      printf("Wrong input!\n");
+      return;
+    }
   for (int i = 1; i < SIZE; i++)
   {
     //If there is a free spot in this row
     if(accounts[i][0] == 0)
       {
-        int funds = accounts[i][1];
-
-        //If the new client would like to make a deposit
-        printf("Initial deposit? Enter 0 if you don't want to make a deposit now\n");
-        printf("Otherwise, enter the sum you would like to deposit\n");
-        scanf("%d",&funds);
-
-        //If the client entered a negative sum to deposit
         while(funds < 0)
         {
           printf("Invalid sum entered!\n");
@@ -66,11 +69,12 @@ void openAccount(){
         printf("Congratulations!\nYour account number is: %d \nYour balance is: %d\n", (i + 900), funds);
         flag = 1;
         break;
+        }
       }
-  }
   if(!flag)
     printf("No room for new account, try later.\n");
 }
+
 
 /*
   This function prints the current balance for the requested account
@@ -93,10 +97,11 @@ void deposit(){
   {
     int funds;
     printf("How much would you like to deposit?\n");
-    scanf("%d",&funds);
-    if(funds >= 0)
+    if(scanf("%d",&funds) != 1) return;
+    else if(funds >= 0)
     {
       accounts[accountNum][1] = funds;
+      printf("%d has been added to your account\n",funds);
     }
     else
       printf("Invalid ammount, try again\n");
@@ -119,7 +124,8 @@ void withdraw(){
     int balance = accounts[account][1];
 
     printf("How much would you like to withdraw?\n");
-    scanf("%d",&sum);
+    if(scanf("%d",&sum) != 1)
+      return;
 
     //If there are no sufficient funds in this account
     if(sum > balance)
@@ -133,7 +139,7 @@ void withdraw(){
       printf("You have withdrawn the requested sum and your balance is now: %d\n", accounts[account][1]);
     }
   }
-  printf("This account is inactive\n");
+  else printf("This account is inactive\n");
 }
 
 /*
@@ -147,7 +153,7 @@ void closeAccount(){
     accounts[account][1] = 0;
     printf("Your account was closed and all funds have been withdrawn. Thank you\n");
   }
-  printf("This account is inactive\n");
+  else printf("This account is inactive\n");
 }
 
 void interest(){
