@@ -6,7 +6,7 @@
 #define FIRST 901
 #define LAST 950
 
-//int accounts[51][2] = {0};
+int accounts[51][2];// = {0};
 
 /*
   We will use this function before every action to get the account the user
@@ -44,35 +44,30 @@ void openAccount(){
   int flag = 0;
   int funds;
   printf("How much would you like to deposit?\n");
-  if (scanf("%d",&funds) != 1)
-    {
-      printf("Wrong input!\n");
-      return;
-    }
+  if (scanf(" %d",&funds) != 1)
+    printf("Wrong input!\n");
+
+  else if(funds < 0)
+  {
+    printf("Wrong input!\n");
+  }
+  else{
   for (int i = 1; i < SIZE; i++)
   {
     //If there is a free spot in this row
     if(accounts[i][0] == 0)
       {
-        while(funds < 0)
-        {
-          printf("Invalid sum entered!\n");
-          printf("Enter 0 if you don't want to make a deposit now\n");
-          printf("Otherwise, enter the sum you would like to deposit\n");
-          scanf("%d",&funds);
-        }
-
         //We found an open spot for the new account and client entered a valid sum
         accounts[i][0] = 1;
         accounts[i][1] = funds;
-
         printf("Congratulations!\nYour account number is: %d \nYour balance is: %d\n", (i + 900), funds);
         flag = 1;
         break;
-        }
       }
+    }
   if(!flag)
     printf("No room for new account, try later.\n");
+  }
 }
 
 
@@ -100,7 +95,7 @@ void deposit(){
     if(scanf("%d",&funds) != 1) return;
     else if(funds >= 0)
     {
-      accounts[accountNum][1] = funds;
+      accounts[accountNum][1] += funds;
       printf("%d has been added to your account\n",funds);
     }
     else
