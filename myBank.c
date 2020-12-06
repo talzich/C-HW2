@@ -152,8 +152,8 @@ void closeAccount(){
 
 void interest(){
   int interest;
-  printf("Please enter interest rate"\n);
-  scanf("%d\n",interest);
+  printf("Please enter interest rate\n");
+  scanf("%d",&interest);
   if(interest < 0 || interest > 100)
     printf("Invalid interest rate\n");
   else
