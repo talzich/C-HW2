@@ -1,6 +1,6 @@
 int accounts[51][2];
 void openAccount();
-void amount();
+void checkBalance();
 void deposit();
 void withdraw();
 void closeAccount();
