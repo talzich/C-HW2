@@ -1,5 +1,5 @@
 AR = ar
-CFLAGS = -Wall -g 
+CFLAGS = -Wall -g
 CC = gcc
 
 all: mains maind
