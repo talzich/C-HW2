@@ -1,4 +1,4 @@
-
+int accounts[51][2];
 void openAccount();
 void amount();
 void deposit();
