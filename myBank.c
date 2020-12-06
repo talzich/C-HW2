@@ -1,6 +1,14 @@
+#include <stdio.h>
+
 define SIZE 51;
 
 accounts = {{0}, {0}};
+
+/*
+  This function takes no parameters and opens an account for the client if
+  there is room for one (our bankj can hold up to 50 accounts).
+  It allows the client to make an initial deposit, if he would like to.
+*/
 void openAccount(){
   int funds;
   for (int i = 1; i < SIZE; i++)
