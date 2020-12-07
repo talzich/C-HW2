@@ -3,9 +3,12 @@
 
 int main(void){
   printf("Welcome to our bank!\n");
-  char action = ' ';
-  while (action != EOF)
+  //char action[2];
+  char action;
+  while (1)
   {
+
+    //action = ' ';
     printf("\nHere is a list of actions you can preform:\n");
     printf("O\t Open a new account\n");
     printf("B\t Check balance\n");
@@ -16,9 +19,11 @@ int main(void){
     printf("P\t Get info of all accounts\n");
     printf("E\t Close all accounts and end this program\n");
 
-    scanf(" %c", &action);
 
-    switch (action) {
+    //fgets(action, sizeof action, stdin);
+    scanf(" %c\n",&action);
+
+    switch (action[0]) {
            case 'O':
                openAccount(); break;
            case 'B':
